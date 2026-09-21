@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #083260;
+  --color-navy-dark: #051c38;
+  --color-navy-light: #0c4380;
+  --color-green: #159640;
+  --color-green-dark: #0e7430;
+  --color-green-light: #1db14e;
+  --color-goldenrod: #DAA520;
+  --color-sea-green: #54B273;
+  --color-dusty-rose: #A26161;
+  --color-sage: #C2B280;
+  --font-raleway: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+html {
+  font-family: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Subtle engineering blueprint fine-grid pattern */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(8, 50, 96, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(8, 50, 96, 0.04) 1px, transparent 1px);
+}
+
+.bg-grid-pattern-dark {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f4f8;
+}
+::-webkit-scrollbar-thumb {
+  background: #083260;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #159640;
+}
