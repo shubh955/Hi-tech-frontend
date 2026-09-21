@@ -4,7 +4,7 @@ export const HERO_SLIDES: HeroSlide[] = [
   {
     id: 'slide-01',
     slideNumber: '01',
-    headline: 'Engineering Power Forwards',
+    headline: 'Engineering Power Forward',
     supportingText: 'High-reliability thermal management systems and transformer cooling infrastructure engineered for the global energy transition.',
     category: 'THERMAL MANAGEMENT',
     ctaText: 'Explore Solutions',

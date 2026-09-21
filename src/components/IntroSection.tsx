@@ -63,8 +63,7 @@ export const IntroSection: React.FC<IntroSectionProps> = ({
                 type="button"
                 id="about-explore-story-btn"
                 onClick={onOpenStoryModal}
-                style={{ backgroundImage: 'linear-gradient(90deg, #083260 0%, #159640 100%)' }}
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-lg text-white text-sm font-semibold tracking-wide transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 hover:brightness-105 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#159640]"
+                className="btn-gradient inline-flex items-center gap-2.5 px-6 py-3.5 rounded-lg text-white text-sm font-semibold tracking-wide shadow-md hover:-translate-y-0.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#159640]"
               >
                 <span>Explore Our Story</span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />

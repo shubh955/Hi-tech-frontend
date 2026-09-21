@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrandLogo } from './BrandLogo';
 import { Menu, X, ArrowUpRight, PhoneCall, ChevronRight } from 'lucide-react';
+import htrLogo from '../assets/images/HTR-logo.png';
+import httLogo from '../assets/images/HTT-logo.png';
 
 interface HeaderProps {
   onOpenEnquiry: (prefillTopic?: string) => void;
@@ -72,19 +74,21 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnquiry }) => {
         />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            {/* Left: Brand Logo */}
-            <a 
-              href="#hero" 
-              onClick={(e) => handleNavClick(e, '#hero')}
-              className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#159640] rounded transition-transform duration-200 hover:opacity-95"
-              aria-label="Hi-Tech Radiators Home"
-            >
-              <BrandLogo 
-                variant="light" 
-                size={isScrolled ? 'sm' : 'md'} 
-                showCompanySubline={!isScrolled} 
+            {/* Left: Partner Logos (HTR then HTT) */}
+            <div className="flex items-center gap-3">
+              <img
+                src={htrLogo}
+                alt="HTR Logo"
+                className={`object-contain transition-all duration-300 ${isScrolled ? 'h-9' : 'h-11'}`}
               />
-            </a>
+              {/* Divider */}
+              <div className="w-px h-8 bg-[#083260]/20 rounded-full" />
+              <img
+                src={httLogo}
+                alt="HTT Logo"
+                className={`object-contain transition-all duration-300 ${isScrolled ? 'h-9' : 'h-11'}`}
+              />
+            </div>
 
             {/* Desktop Center/Right Navigation */}
             <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2" aria-label="Main Navigation">
@@ -116,8 +120,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnquiry }) => {
                 type="button"
                 id="header-enquire-cta"
                 onClick={() => onOpenEnquiry()}
-                style={{ backgroundImage: 'linear-gradient(90deg, #083260 0%, #159640 100%)' }}
-                className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-0.5 hover:brightness-105 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#159640] focus-visible:ring-offset-2"
+                className="btn-gradient hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white shadow-sm hover:-translate-y-0.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#159640] focus-visible:ring-offset-2"
               >
                 <span>Talk to Us</span>
                 <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -195,8 +198,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnquiry }) => {
                   setMobileMenuOpen(false);
                   onOpenEnquiry();
                 }}
-                style={{ backgroundImage: 'linear-gradient(90deg, #083260 0%, #159640 100%)' }}
-                className="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-lg text-white font-semibold hover:brightness-110 transition-all shadow-md"
+                className="btn-gradient w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-lg text-white font-semibold transition-transform hover:-translate-y-0.5 shadow-md"
               >
                 <PhoneCall className="w-4 h-4" />
                 <span>Enquire Now</span>

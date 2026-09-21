@@ -154,8 +154,7 @@ export const StoryModal: React.FC<StoryModalProps> = ({ isOpen, onClose, onOpenE
                 onClose();
                 onOpenEnquiry();
               }}
-              style={{ backgroundImage: 'linear-gradient(90deg, #083260 0%, #159640 100%)' }}
-              className="px-5 py-2.5 rounded-lg text-white text-xs font-bold uppercase tracking-wider transition-all hover:brightness-110 shadow-md"
+              className="btn-gradient px-5 py-2.5 rounded-lg text-white text-xs font-bold uppercase tracking-wider shadow-md hover:-translate-y-0.5"
             >
               Contact Our Engineering Office
             </button>

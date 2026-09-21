@@ -173,8 +173,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onOpenEnquiry }) => 
               type="button"
               id="hero-primary-action-btn"
               onClick={() => handleCtaClick(currentSlide)}
-              style={{ backgroundImage: 'linear-gradient(90deg, #083260 0%, #159640 100%)' }}
-              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-lg text-white text-sm font-semibold tracking-wide transition-all duration-300 shadow-xl hover:shadow-2xl hover:brightness-110 hover:translate-x-1 group focus:outline-none focus-visible:ring-2 focus-visible:ring-white border border-white/20"
+              className="btn-gradient inline-flex items-center gap-2.5 px-6 py-3.5 rounded-lg text-white text-sm font-semibold tracking-wide shadow-xl hover:-translate-y-0.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-white border border-white/20"
             >
               <span>{currentSlide.ctaText}</span>
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -184,7 +183,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onOpenEnquiry }) => 
               type="button"
               id="hero-secondary-enquiry-btn"
               onClick={() => onOpenEnquiry(currentSlide.category)}
-              className="inline-flex items-center gap-2 px-5 py-3.5 rounded bg-black/40 hover:bg-black/60 text-white text-sm font-semibold tracking-wide border border-white/30 backdrop-blur-xs transition-all duration-300 hover:border-white/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-white shadow-lg"
+              className="btn-specs inline-flex items-center gap-2 px-5 py-3.5 rounded bg-black/40 text-white text-sm font-semibold tracking-wide border border-white/30 backdrop-blur-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-white shadow-lg"
             >
               <span>Request Technical Specs</span>
             </button>

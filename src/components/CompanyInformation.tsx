@@ -373,10 +373,7 @@ export const CompanyInformation: React.FC<CompanyInformationProps> = ({ onOpenEn
                           LOCATION {loc.number}
                         </span>
 
-                        {/* Secondary Color Tag Badge */}
-                        <span className={`px-2.5 py-1 rounded-md text-[11px] sm:text-xs font-mono font-bold tracking-wider shadow-sm border ${loc.badgeBg} ${loc.badgeText} ${loc.badgeBorder}`}>
-                          {loc.colorName}
-                        </span>
+
                       </div>
                     </div>
 

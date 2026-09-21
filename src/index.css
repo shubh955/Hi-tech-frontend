@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "./common.css";
+
 
 @theme {
   --color-navy: #083260;
@@ -48,4 +50,46 @@ html {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #159640;
+}
+
+/* ─── Gradient Button: right-to-left sweep on hover ─── */
+.btn-gradient {
+  background-image: linear-gradient(90deg, #083260 0%, #159640 50%, #083260 100%);
+  background-size: 200% 100%;
+  background-position: right center;
+  transition: background-position 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s ease,
+              transform 0.2s ease;
+}
+.btn-gradient:hover {
+  background-position: left center;
+  box-shadow: 0 8px 28px rgba(21, 150, 64, 0.35), 0 4px 12px rgba(8, 50, 96, 0.25);
+}
+
+/* ─── Request Technical Specs: shimmer sweep effect ─── */
+.btn-specs {
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-specs::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 80%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-specs:hover::before {
+  transform: translateX(100%);
+}
+.btn-specs:hover {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15), inset 0 0 12px rgba(255, 255, 255, 0.05);
 }

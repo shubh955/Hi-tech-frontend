@@ -210,8 +210,8 @@ export const ManufacturingSection: React.FC<ManufacturingSectionProps> = ({ onOp
                           e.stopPropagation();
                           onOpenEnquiry(`Technical Audit / Facility Visit: ${facility.title}`);
                         }}
-                        style={{ backgroundImage: 'linear-gradient(90deg, #083260 0%, #159640 100%)' }}
-                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-white text-xs font-semibold tracking-wide transition-all shadow-md hover:brightness-110 hover:shadow-lg focus:outline-none"
+                        style={{ backgroundImage: 'none' }}
+                        className="btn-gradient inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-white text-xs font-semibold tracking-wide shadow-md focus:outline-none"
                       >
                         <span>Request Audit</span>
                         <ArrowRight className="w-3 h-3" />

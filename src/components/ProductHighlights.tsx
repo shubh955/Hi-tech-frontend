@@ -208,8 +208,7 @@ export const ProductHighlights: React.FC<ProductHighlightsProps> = ({ onOpenEnqu
                               e.stopPropagation();
                               onOpenEnquiry(item.name);
                             }}
-                            style={{ backgroundImage: 'linear-gradient(90deg, #083260 0%, #159640 100%)' }}
-                            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-md text-xs font-semibold text-white shadow-md transition-all hover:brightness-110 hover:-translate-y-0.5"
+                            className="btn-gradient inline-flex items-center gap-1.5 px-4 py-2 rounded-md text-xs font-semibold text-white shadow-md hover:-translate-y-0.5"
                           >
                             <span>Inquire</span>
                             <ArrowUpRight className="w-3.5 h-3.5" />
@@ -239,21 +238,19 @@ export const ProductHighlights: React.FC<ProductHighlightsProps> = ({ onOpenEnqu
           })}
         </div>
 
-        {/* Dedicated Hot-Dip Galvanising Banner with Direct LinkedIn Link & Button */}
+
+        {/* HOT-DIP GALVANISING CAPABILITIES — temporarily hidden
         <div className="mt-10 sm:mt-12 rounded-xl overflow-hidden border border-slate-200/90 shadow-lg bg-[#083260] text-white relative">
-          {/* Facility Background Photo with Gradient Treatment */}
           <img
             src="https://www.hitechradiators.com/wp-content/uploads/2025/03/Why_Hi-Tech_State_of_The_art_Hot_dip_Galvanization_Process.png"
             alt="Hi-Tech State-of-the-Art Hot-Dip Galvanising Process"
             className="absolute inset-0 w-full h-full object-cover object-center opacity-25 mix-blend-luminosity"
             loading="lazy"
           />
-          {/* Gradient Overlay for Pristine Legibility */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#083260] via-[#083260]/90 to-[#051c38]/95" />
 
           <div className="relative z-10 p-6 sm:p-8 lg:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
             <div className="max-w-2xl">
-              {/* Category Eyebrow & Secondary Color Tag */}
               <div className="flex flex-wrap items-center gap-2.5 mb-3">
                 <span className="w-2.5 h-2.5 rounded-xs" style={{ backgroundColor: '#C2B280' }} />
                 <span className="font-mono text-xs uppercase tracking-widest text-[#C2B280] font-semibold">
@@ -272,7 +269,6 @@ export const ProductHighlights: React.FC<ProductHighlightsProps> = ({ onOpenEnqu
                 Equipped with automated 7-tank chemical pre-treatment and a 7.5-meter Special High Grade (SHG) 99.995% molten zinc bath. Certified to ISO 1461, EN ISO 10684, and ASTM A123 standards for harsh industrial and coastal environments.
               </p>
 
-              {/* Direct LinkedIn Text Link with URL */}
               <div className="flex flex-wrap items-center gap-2 pt-1">
                 <span className="text-xs text-slate-300">Discover project highlights &amp; facility updates on LinkedIn:</span>
                 <a
@@ -288,7 +284,6 @@ export const ProductHighlights: React.FC<ProductHighlightsProps> = ({ onOpenEnqu
               </div>
             </div>
 
-            {/* Actions: Prominent LinkedIn Button & Inquiry Button */}
             <div className="flex flex-col sm:flex-row lg:flex-col shrink-0 gap-3 w-full sm:w-auto">
               <a
                 href="https://www.linkedin.com/company/hi-tech-radiators-pvt-ltd/"
@@ -314,6 +309,8 @@ export const ProductHighlights: React.FC<ProductHighlightsProps> = ({ onOpenEnqu
             </div>
           </div>
         </div>
+        */}
+
       </div>
 
       {/* Product Detail Modal */}
@@ -425,8 +422,7 @@ export const ProductHighlights: React.FC<ProductHighlightsProps> = ({ onOpenEnqu
                     setSelectedProduct(null);
                     onOpenEnquiry(name);
                   }}
-                  style={{ backgroundImage: 'linear-gradient(90deg, #083260 0%, #159640 100%)' }}
-                  className="px-5 py-2.5 rounded-lg text-white text-xs font-semibold tracking-wide transition-all hover:brightness-110 shadow-md"
+                  className="btn-gradient px-5 py-2.5 rounded-lg text-white text-xs font-semibold tracking-wide shadow-md hover:-translate-y-0.5"
                 >
                   Request Technical Quotation
                 </button>

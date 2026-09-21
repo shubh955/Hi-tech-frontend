@@ -201,8 +201,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  style={{ backgroundImage: 'linear-gradient(90deg, #083260 0%, #159640 100%)' }}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white text-xs font-bold uppercase tracking-wider transition-all hover:brightness-110 shadow-md hover:shadow-lg disabled:opacity-50"
+                  className="btn-gradient inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white text-xs font-bold uppercase tracking-wider shadow-md hover:-translate-y-0.5 disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     <span>Transmitting...</span>
