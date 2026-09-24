@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { BrandLogo } from './BrandLogo';
-import { Menu, X, ArrowUpRight, PhoneCall, ChevronRight } from 'lucide-react';
+import { Menu, X, ArrowUpRight, PhoneCall, ChevronRight, ChevronDown } from 'lucide-react';
 import htrLogo from '../assets/images/HTR-logo.png';
 import httLogo from '../assets/images/HTT-logo.png';
 
@@ -8,10 +8,18 @@ interface HeaderProps {
   onOpenEnquiry: (prefillTopic?: string) => void;
 }
 
+interface NavLink {
+  label: string;
+  href: string;
+  sectionId?: string;
+}
+
 export const Header: React.FC<HeaderProps> = ({ onOpenEnquiry }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
+  const [moreOpen, setMoreOpen] = useState(false);
+  const moreRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,19 +47,68 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnquiry }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close the desktop "Corporate" dropdown on outside click or Escape
+  useEffect(() => {
+    if (!moreOpen) return;
+    const handlePointer = (e: MouseEvent) => {
+      if (moreRef.current && !moreRef.current.contains(e.target as Node)) setMoreOpen(false);
+    };
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMoreOpen(false);
+    };
+    document.addEventListener('mousedown', handlePointer);
+    document.addEventListener('keydown', handleKey);
+    return () => {
+      document.removeEventListener('mousedown', handlePointer);
+      document.removeEventListener('keydown', handleKey);
+    };
+  }, [moreOpen]);
+
   // Placeholder links — inner pages are not built yet, so menu items link to '#'
-  const navLinks = [
-    { label: 'About', href: '#', sectionId: 'about' },
-    { label: 'Products', href: '#', sectionId: 'solutions' },
-    { label: 'Manufacturing', href: '#', sectionId: 'manufacturing' },
-    { label: 'Capabilities', href: '#', sectionId: 'capability' },
-    { label: 'Sustainability', href: '#', sectionId: 'sustainability' },
+  const navLinks: NavLink[] = [
+    { label: 'Home', href: '#', sectionId: 'hero' },
+    { label: 'About Us', href: '#', sectionId: 'about' },
+    { label: 'Products & Services', href: '#', sectionId: 'solutions' },
+    { label: 'Our Clients', href: '#' },
+    { label: 'Investor Relations', href: '#' },
+    { label: 'Careers', href: '#' },
+    { label: 'Media', href: '#' },
+    { label: 'CSR', href: '#' },
     { label: 'Contact Us', href: '#', sectionId: 'contact' },
   ];
+
+  // Desktop: corporate items are grouped under "Corporate" so the bar fits on one line
+  const moreLabels = ['Investor Relations', 'Careers', 'Media', 'CSR'];
+  const moreLinks = navLinks.filter((link) => moreLabels.includes(link.label));
+  const primaryBefore = navLinks.slice(0, navLinks.findIndex((link) => link.label === moreLabels[0]));
+  const primaryAfter = navLinks.filter(
+    (link) => !moreLabels.includes(link.label) && !primaryBefore.includes(link)
+  );
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     setMobileMenuOpen(false);
+    setMoreOpen(false);
+  };
+
+  const renderDesktopLink = (link: NavLink) => {
+    const isActive = activeSection === link.sectionId;
+    return (
+      <a
+        key={link.label}
+        href={link.href}
+        onClick={handleNavClick}
+        className="relative px-2.5 2xl:px-3.5 py-2 text-sm font-medium whitespace-nowrap text-[#083260] hover:text-[#083260] transition-colors duration-200 group"
+      >
+        <span>{link.label}</span>
+        {/* Sustainable Green underline that animates from left to right on hover */}
+        <span
+          className={`absolute bottom-0 left-2.5 right-2.5 2xl:left-3.5 2xl:right-3.5 h-[2px] bg-[#159640] transition-all duration-300 origin-left ${
+            isActive ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-100'
+          }`}
+        />
+      </a>
+    );
   };
 
   return (
@@ -70,9 +127,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnquiry }) => {
           style={{ backgroundImage: 'linear-gradient(90deg, #083260 0%, #159640 100%)' }}
         />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-6">
             {/* Left: Partner Logos (HTR then HTT) */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 shrink-0">
               <img
                 src={htrLogo}
                 alt="HTR Logo"
@@ -88,36 +145,71 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnquiry }) => {
             </div>
 
             {/* Desktop Center/Right Navigation */}
-            <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2" aria-label="Main Navigation">
-              {navLinks.map((link) => {
-                const isActive = activeSection === link.sectionId;
-                return (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    onClick={handleNavClick}
-                    className="relative px-3.5 py-2 text-sm font-medium text-[#083260] hover:text-[#083260] transition-colors duration-200 group"
-                  >
-                    <span>{link.label}</span>
-                    {/* Sustainable Green underline that animates from left to right on hover */}
-                    <span 
-                      className={`absolute bottom-0 left-3.5 right-3.5 h-[2px] bg-[#159640] transition-all duration-300 origin-left ${
-                        isActive ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-100'
-                      }`}
-                    />
-                  </a>
-                );
-              })}
+            <nav className="hidden xl:flex items-center" aria-label="Main Navigation">
+              {primaryBefore.map(renderDesktopLink)}
+
+              {/* "Corporate" dropdown — opens on hover or click */}
+              <div
+                ref={moreRef}
+                className="relative"
+                onMouseEnter={() => setMoreOpen(true)}
+                onMouseLeave={() => setMoreOpen(false)}
+              >
+                <button
+                  type="button"
+                  id="nav-more-toggle"
+                  onClick={() => setMoreOpen((prev) => !prev)}
+                  aria-haspopup="true"
+                  aria-expanded={moreOpen}
+                  className="relative inline-flex items-center gap-1 px-2.5 2xl:px-3.5 py-2 text-sm font-medium whitespace-nowrap text-[#083260] transition-colors duration-200 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#159640] rounded"
+                >
+                  <span>Corporate</span>
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-300 ${moreOpen ? 'rotate-180' : ''}`}
+                  />
+                  <span
+                    className={`absolute bottom-0 left-2.5 right-2.5 2xl:left-3.5 2xl:right-3.5 h-[2px] bg-[#159640] transition-all duration-300 origin-left ${
+                      moreOpen ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-100'
+                    }`}
+                  />
+                </button>
+
+                {/* pt-2 bridges the gap so hover isn't lost moving into the panel */}
+                <div
+                  className={`absolute left-1/2 -translate-x-1/2 top-full pt-2 transition-all duration-200 ${
+                    moreOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-1'
+                  }`}
+                >
+                  <div className="min-w-[200px] rounded-lg bg-white shadow-xl border border-[#083260]/10 overflow-hidden">
+                    <div className="h-[2.5px]" style={{ backgroundImage: 'linear-gradient(90deg, #083260 0%, #159640 100%)' }} />
+                    <div className="py-1.5">
+                      {moreLinks.map((link) => (
+                        <a
+                          key={link.label}
+                          href={link.href}
+                          onClick={handleNavClick}
+                          className="flex items-center justify-between gap-3 px-4 py-2.5 text-sm font-medium text-[#083260] hover:bg-[#159640]/5 hover:text-[#159640] transition-colors group/item"
+                        >
+                          <span>{link.label}</span>
+                          <ChevronRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all" />
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {primaryAfter.map(renderDesktopLink)}
             </nav>
 
             {/* Action CTA & Mobile Trigger */}
-            <div className="flex items-center gap-3 sm:gap-4">
+            <div className="flex items-center gap-3 sm:gap-4 shrink-0">
               {/* Primary Header CTA */}
               <button
                 type="button"
                 id="header-enquire-cta"
                 onClick={() => onOpenEnquiry()}
-                className="btn-gradient hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white shadow-sm hover:-translate-y-0.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#159640] focus-visible:ring-offset-2"
+                className="btn-gradient hidden sm:inline-flex items-center gap-2 whitespace-nowrap px-5 py-2.5 rounded-lg text-sm font-semibold text-white shadow-sm hover:-translate-y-0.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#159640] focus-visible:ring-offset-2"
               >
                 <span>Talk to Us</span>
                 <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -128,7 +220,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnquiry }) => {
                 type="button"
                 id="mobile-menu-toggle"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden p-2 rounded text-[#083260] hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-[#159640]"
+                className="xl:hidden p-2 rounded text-[#083260] hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-[#159640]"
                 aria-label={mobileMenuOpen ? 'Close Navigation' : 'Open Navigation'}
                 aria-expanded={mobileMenuOpen}
               >
@@ -143,7 +235,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnquiry }) => {
       {mobileMenuOpen && (
         <div 
           id="mobile-nav-backdrop"
-          className="fixed inset-0 z-40 bg-black/60 backdrop-blur-xs lg:hidden animate-fade-in"
+          className="fixed inset-0 z-40 bg-black/60 backdrop-blur-xs xl:hidden animate-fade-in"
           onClick={() => setMobileMenuOpen(false)}
         >
           <div 
