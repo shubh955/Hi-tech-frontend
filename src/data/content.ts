@@ -231,7 +231,7 @@ export const PRODUCT_ITEMS: ProductItem[] = [
     id: 'galvanising',
     number: '03',
     name: 'GALVANISING',
-    shortCopy: 'Advanced galvanising capabilities designed to provide durable corrosion protection and long-term performance.',
+    shortCopy: 'Hot-dip galvanising with automated 7-tank pre-treatment and a 7.5 m SHG zinc bath, delivering durable corrosion protection for harsh industrial and coastal environments.',
     image: 'https://www.hitechradiators.com/wp-content/uploads/2025/03/Why_Hi-Tech_State_of_The_art_Hot_dip_Galvanization_Process.png',
     colorHex: '#C2B280', // Sage
     features: [

@@ -39,22 +39,19 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnquiry }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Placeholder links — inner pages are not built yet, so menu items link to '#'
   const navLinks = [
-    { label: 'About', href: '#about', sectionId: 'about' },
-    { label: 'Products', href: '#solutions', sectionId: 'solutions' },
-    { label: 'Manufacturing', href: '#manufacturing', sectionId: 'manufacturing' },
-    { label: 'Capabilities', href: '#capability', sectionId: 'capability' },
-    { label: 'Sustainability', href: '#sustainability', sectionId: 'sustainability' },
-    { label: 'Contact Us', href: '#contact', sectionId: 'contact' },
+    { label: 'About', href: '#', sectionId: 'about' },
+    { label: 'Products', href: '#', sectionId: 'solutions' },
+    { label: 'Manufacturing', href: '#', sectionId: 'manufacturing' },
+    { label: 'Capabilities', href: '#', sectionId: 'capability' },
+    { label: 'Sustainability', href: '#', sectionId: 'sustainability' },
+    { label: 'Contact Us', href: '#', sectionId: 'contact' },
   ];
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     setMobileMenuOpen(false);
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
   };
 
   return (
@@ -98,7 +95,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnquiry }) => {
                   <a
                     key={link.label}
                     href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
+                    onClick={handleNavClick}
                     className="relative px-3.5 py-2 text-sm font-medium text-[#083260] hover:text-[#083260] transition-colors duration-200 group"
                   >
                     <span>{link.label}</span>
@@ -174,7 +171,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnquiry }) => {
                   <a
                     key={link.label}
                     href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
+                    onClick={handleNavClick}
                     className="flex items-center justify-between py-3 px-3 rounded hover:bg-white/5 text-base font-medium text-white transition-colors"
                   >
                     <span>{link.label}</span>

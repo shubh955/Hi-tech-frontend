@@ -11,8 +11,8 @@ export const ProductHighlights: React.FC<ProductHighlightsProps> = ({ onOpenEnqu
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
 
-  // Filter out Galvanising from the core product cards so only Radiators and Tanks are shown
-  const primaryProducts = PRODUCT_ITEMS.filter((item) => item.id !== 'galvanising');
+  // Core product cards: Radiators, Tanks and Galvanising
+  const primaryProducts = PRODUCT_ITEMS;
 
   return (
     <section id="solutions" className="py-28 bg-[#FFFFFF] relative">
@@ -37,12 +37,12 @@ export const ProductHighlights: React.FC<ProductHighlightsProps> = ({ onOpenEnqu
           />
 
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-            From transformer radiators to engineered tanks, Hi-Tech delivers precision-manufactured components built for demanding power transmission and distribution infrastructure.
+            From transformer radiators and engineered tanks to hot-dip galvanising, Hi-Tech delivers precision-manufactured components built for demanding power transmission and distribution infrastructure.
           </p>
         </div>
 
-        {/* 2-Column Product Showcase Cards Grid with Drag-Up Hover Reveal */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+        {/* 3-Column Product Showcase Cards Grid with Drag-Up Hover Reveal */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
           {primaryProducts.map((item) => {
             const isExpanded = activeCardId === item.id;
 
@@ -133,7 +133,7 @@ export const ProductHighlights: React.FC<ProductHighlightsProps> = ({ onOpenEnqu
                     />
 
                     <div className="flex items-center justify-between gap-3">
-                      <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+                      <h3 className="text-2xl sm:text-3xl lg:text-2xl xl:text-3xl font-extrabold text-white tracking-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
                         {item.number} &mdash; {item.name}
                       </h3>
                       
@@ -179,7 +179,8 @@ export const ProductHighlights: React.FC<ProductHighlightsProps> = ({ onOpenEnqu
                           ))}
                         </div>
 
-                        {/* Actions: Explore Deep Dive & Technical Inquiry */}
+                        {/* Actions: Explore Deep Dive & Technical Inquiry — hidden for Galvanising */}
+                        {item.id !== 'galvanising' && (
                         <div className="flex items-center gap-3 pt-1">
                           <button
                             type="button"
@@ -214,6 +215,7 @@ export const ProductHighlights: React.FC<ProductHighlightsProps> = ({ onOpenEnqu
                             <ArrowUpRight className="w-3.5 h-3.5" />
                           </button>
                         </div>
+                        )}
                       </div>
                     </div>
                   </div>
