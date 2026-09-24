@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CLIENT_LOGOS } from '../data/content';
-import { Handshake, CheckCircle2 } from 'lucide-react';
+import { Handshake } from 'lucide-react';
 
 export const ClientMarquee: React.FC = () => {
   const [isPaused, setIsPaused] = useState(false);
@@ -42,7 +42,7 @@ export const ClientMarquee: React.FC = () => {
 
         {/* Marquee Track */}
         <div
-          className={`flex items-center gap-12 sm:gap-16 w-max transition-transform ${
+          className={`flex items-center gap-8 sm:gap-12 w-max transition-transform ${
             isPaused ? 'cursor-pointer' : ''
           }`}
           style={{
@@ -53,25 +53,19 @@ export const ClientMarquee: React.FC = () => {
           {marqueeItems.map((client, index) => (
             <div
               key={`${client.name}-${index}`}
-              className="group flex flex-col items-center justify-center p-6 rounded bg-white border border-slate-200/80 shadow-xs hover:shadow-md hover:border-[#159640]/50 transition-all duration-300 w-56 h-28 shrink-0 select-none"
+              aria-hidden={index >= CLIENT_LOGOS.length}
+              className="group flex items-center justify-center p-5 rounded-[10px] bg-white border border-slate-200/80 shadow-xs hover:shadow-md hover:border-[#159640]/50 transition-all duration-300 w-44 h-22 sm:w-48 sm:h-24 shrink-0 select-none overflow-hidden"
             >
-              {/* Monochromatic Logo Representation with Brand Color on Hover */}
-              <div className="flex items-center justify-center text-center">
-                <span className="font-extrabold text-2xl tracking-tighter text-slate-400 group-hover:text-[#083260] transition-colors duration-300 font-mono">
-                  {client.name}
-                </span>
-              </div>
-
-              {/* Sub-division descriptor */}
-              <span className="text-[10px] text-slate-400 group-hover:text-[#159640] transition-colors duration-300 tracking-wider uppercase text-center mt-2 font-medium line-clamp-1">
-                {client.division}
-              </span>
-
-              {/* Verified OEM indicator */}
-              <div className="mt-1 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 text-[9px] text-slate-500 font-mono">
-                <CheckCircle2 className="w-3 h-3 text-[#159640]" />
-                <span>Tier-1 Approved</span>
-              </div>
+              {/* Monochrome logo that returns to full brand colour on hover */}
+              <img
+                src={client.logo}
+                alt={index < CLIENT_LOGOS.length ? `${client.name} logo` : ''}
+                className="w-full h-full object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                style={{ transform: `scale(${client.scale ?? 1})` }}
+                loading="lazy"
+                decoding="async"
+                draggable={false}
+              />
             </div>
           ))}
         </div>

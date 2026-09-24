@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { HERO_SLIDES } from '../data/content';
-import { ChevronLeft, ChevronRight, ArrowRight, ShieldCheck, Cpu } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 
 interface HeroCarouselProps {
   onOpenEnquiry: (topic?: string) => void;
@@ -50,11 +50,16 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onOpenEnquiry }) => 
   };
 
   const handleCtaClick = (slide: typeof currentSlide) => {
+    if (slide.targetSection === 'enquiry') {
+      onOpenEnquiry();
+      return;
+    }
     const el = document.getElementById(slide.targetSection);
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      // Sections align to top; single cards (e.g. Galvanising) are centred in view
+      el.scrollIntoView({ behavior: 'smooth', block: el.tagName === 'SECTION' ? 'start' : 'center' });
     } else {
-      onOpenEnquiry(slide.category);
+      onOpenEnquiry();
     }
   };
 
@@ -104,49 +109,14 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onOpenEnquiry }) => 
 
       {/* Main Hero Content Container */}
       <div className="relative z-20 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-between pt-32 pb-14">
-        {/* Top Status Bar: Category & Quality Commitment */}
-        <div className="flex items-center justify-between border-b border-white/15 pb-4">
-          <div className="flex items-center gap-3">
-            <span 
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-semibold tracking-widest uppercase border transition-all duration-300"
-              style={{
-                backgroundColor: `${currentSlide.colorHex}25`,
-                borderColor: `${currentSlide.colorHex}60`,
-                color: currentSlide.colorHex,
-              }}
-            >
-              <Cpu className="w-3.5 h-3.5" style={{ color: currentSlide.colorHex }} />
-              {currentSlide.category}
-            </span>
-            <span className="hidden sm:inline-block text-xs font-medium text-slate-200 tracking-wider drop-shadow-sm">
-              B2B Power Grid &amp; Transformer Infrastructure &bull; Precision Engineered
-            </span>
-          </div>
-
-          <div className="flex items-center gap-2 text-xs text-slate-200 font-mono drop-shadow-sm">
-            <ShieldCheck className="w-4 h-4" style={{ color: currentSlide.colorHex }} />
-            <span className="hidden md:inline">{currentSlide.technicalSpec}</span>
-          </div>
-        </div>
-
-        {/* Center / Middle Content: Main Headline & CTA */}
+        {/* Center / Middle Content: Headline, Supporting Line & CTA */}
         <div className="max-w-3xl my-auto py-6">
-          {/* Animated Slide Number Eyebrow */}
-          <div className="flex items-center gap-3 mb-4">
-            <span 
-              className="font-bold text-sm tracking-widest font-mono transition-colors duration-300"
-              style={{ color: currentSlide.colorHex }}
-            >
-              SLIDE {currentSlide.slideNumber} / 04
-            </span>
-            <span 
-              className="w-12 h-[2px] transition-all duration-300"
-              style={{ backgroundColor: currentSlide.colorHex }} 
-            />
-            <span className="text-xs uppercase tracking-widest text-slate-200 font-medium drop-shadow-sm">
-              Hi-Tech Radiators Pvt. Ltd. &bull; {currentSlide.symbolism}
-            </span>
-          </div>
+          {/* Accent bar in the slide colour */}
+          <span
+            key={`accent-${currentSlideIndex}`}
+            className="block w-16 h-1 rounded-full mb-6 animate-[fadeInUp_0.6s_ease-out]"
+            style={{ backgroundColor: currentSlide.colorHex }}
+          />
 
           {/* Headline (Keyed for smooth re-trigger animation) */}
           <h1
@@ -164,10 +134,10 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onOpenEnquiry }) => 
             {currentSlide.supportingText}
           </p>
 
-          {/* CTAs */}
-          <div 
+          {/* CTA */}
+          <div
             key={`cta-${currentSlideIndex}`}
-            className="flex flex-wrap items-center gap-4 animate-[fadeInUp_0.9s_ease-out]"
+            className="animate-[fadeInUp_0.9s_ease-out]"
           >
             <button
               type="button"
@@ -177,15 +147,6 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onOpenEnquiry }) => 
             >
               <span>{currentSlide.ctaText}</span>
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </button>
-
-            <button
-              type="button"
-              id="hero-secondary-enquiry-btn"
-              onClick={() => onOpenEnquiry(currentSlide.category)}
-              className="btn-specs inline-flex items-center gap-2 px-5 py-3.5 rounded bg-black/40 text-white text-sm font-semibold tracking-wide border border-white/30 backdrop-blur-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-white shadow-lg"
-            >
-              <span>Request Technical Specs</span>
             </button>
           </div>
         </div>
@@ -235,12 +196,8 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onOpenEnquiry }) => 
             })}
           </div>
 
-          {/* Controls: Prev / Next Buttons & Pause indicator */}
+          {/* Controls: Prev / Next Buttons */}
           <div className="flex items-center gap-3 self-end sm:self-center">
-            <span className="text-[11px] font-mono tracking-wider text-slate-300 uppercase">
-              {isPaused ? 'Paused' : 'Auto-Playing'}
-            </span>
-
             <div className="flex items-center gap-1.5 bg-black/30 p-1 rounded-md border border-white/10">
               <button
                 type="button"

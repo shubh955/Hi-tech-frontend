@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { CAPABILITY_STATS } from '../data/content';
-import { Factory, Globe2, Calendar, Users, Box, Cpu, ShieldCheck } from 'lucide-react';
+import { CAPABILITY_STATS, CAPABILITY_FACTS } from '../data/content';
+import { Factory, Globe2, Calendar, Users, Handshake, Ruler, HardHat, BadgeCheck, Award } from 'lucide-react';
 
-const STAT_ICONS = [Calendar, Globe2, Users, Box, Cpu, ShieldCheck];
+const STAT_ICONS = [Calendar, Globe2, Handshake, Ruler];
+const FACT_ICONS = [Users, HardHat, BadgeCheck, Award];
+const FACT_COLORS = ['#DAA520', '#54B273', '#A26161', '#C2B280'];
 
 export const CapabilityStrip: React.FC = () => {
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -94,14 +96,14 @@ export const CapabilityStrip: React.FC = () => {
               style={{ backgroundImage: 'linear-gradient(90deg, #083260 0%, #159640 100%)' }}
             />
             <p className="mt-2 text-sm text-slate-300 leading-relaxed font-normal">
-              Continuous infrastructure investments delivering unmatched thermal manufacturing volume and structural integrity for critical transmission networks.
+              Five plants near Mumbai building radiators, tanks and hot dip galvanising for transformer manufacturers around the world.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-slate-300">
             <span className="flex items-center gap-2 px-3 py-1.5 rounded bg-white/5 border border-white/10">
               <Factory className="w-4 h-4 text-[#54B273]" />
-              <span>Automated Lines</span>
+              <span>5 Plants</span>
             </span>
             <span className="flex items-center gap-2 px-3 py-1.5 rounded bg-white/5 border border-white/10">
               <Globe2 className="w-4 h-4 text-[#DAA520]" />
@@ -110,8 +112,8 @@ export const CapabilityStrip: React.FC = () => {
           </div>
         </div>
 
-        {/* Robust 3-Column Responsive Grid (No Cramping or Text Overflow) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {/* Headline Stats: 4-Column Responsive Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6">
           {CAPABILITY_STATS.map((stat, idx) => {
             const countValue = counts[idx];
             const Icon = STAT_ICONS[idx % STAT_ICONS.length];
@@ -146,7 +148,7 @@ export const CapabilityStrip: React.FC = () => {
                 {/* Metric Value Display with Protected Non-Overflow Layout */}
                 <div className="my-2">
                   <div className="flex items-baseline flex-wrap gap-x-2 gap-y-1">
-                    <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-mono whitespace-nowrap">
+                    <span className="text-3xl sm:text-4xl xl:text-5xl font-extrabold text-white tracking-tight font-mono whitespace-nowrap">
                       {countValue.toLocaleString()}
                     </span>
                     <span 
@@ -186,7 +188,50 @@ export const CapabilityStrip: React.FC = () => {
           })}
         </div>
 
+        {/* Second Row: People & Certifications */}
+        <div className="mt-10 lg:mt-12 rounded bg-[#0a3868] border border-white/10 shadow-lg">
+          <div className="flex items-center gap-2 px-6 sm:px-7 pt-5 pb-4 border-b border-white/10">
+            <span className="w-2 h-2 rounded-xs bg-[#159640]" />
+            <span className="font-mono text-[11px] uppercase tracking-wider text-slate-400 font-semibold">
+              People &amp; Certifications
+            </span>
+          </div>
 
+          {/* 1px gaps over a light backdrop act as the cell dividers at every breakpoint */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 rounded-b overflow-hidden">
+            {CAPABILITY_FACTS.map((fact, idx) => {
+              const Icon = FACT_ICONS[idx % FACT_ICONS.length];
+              const color = FACT_COLORS[idx % FACT_COLORS.length];
+
+              return (
+                <div
+                  key={fact.title}
+                  id={`capability-fact-${idx + 1}`}
+                  className="group flex items-start gap-3.5 p-6 sm:p-7 bg-[#0a3868] transition-colors duration-300 hover:bg-[#0d3f74]"
+                >
+                  <div
+                    className="shrink-0 w-9 h-9 rounded flex items-center justify-center border transition-transform duration-300 group-hover:scale-110"
+                    style={{
+                      backgroundColor: `${color}15`,
+                      borderColor: `${color}40`,
+                      color
+                    }}
+                  >
+                    <Icon className="w-4 h-4" />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="text-sm sm:text-base font-bold text-white leading-snug">
+                      {fact.title}
+                    </h3>
+                    <p className="mt-1.5 text-xs text-slate-300 leading-relaxed">
+                      {fact.detail}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </section>
   );

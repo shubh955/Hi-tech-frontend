@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BrandLogo } from './BrandLogo';
+import { NAV_LINKS } from '../data/content';
 import { Menu, X, ArrowUpRight, PhoneCall, ChevronRight, ChevronDown } from 'lucide-react';
 import htrLogo from '../assets/images/HTR-logo.png';
 import httLogo from '../assets/images/HTT-logo.png';
@@ -64,18 +65,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnquiry }) => {
     };
   }, [moreOpen]);
 
-  // Placeholder links — inner pages are not built yet, so menu items link to '#'
-  const navLinks: NavLink[] = [
-    { label: 'Home', href: '#', sectionId: 'hero' },
-    { label: 'About Us', href: '#', sectionId: 'about' },
-    { label: 'Products & Services', href: '#', sectionId: 'solutions' },
-    { label: 'Our Clients', href: '#' },
-    { label: 'Investor Relations', href: '#' },
-    { label: 'Careers', href: '#' },
-    { label: 'Media', href: '#' },
-    { label: 'CSR', href: '#' },
-    { label: 'Contact Us', href: '#', sectionId: 'contact' },
-  ];
+  const navLinks: NavLink[] = NAV_LINKS;
 
   // Desktop: corporate items are grouped under "Corporate" so the bar fits on one line
   const moreLabels = ['Investor Relations', 'Careers', 'Media', 'CSR'];

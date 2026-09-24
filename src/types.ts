@@ -3,14 +3,13 @@ export interface HeroSlide {
   slideNumber: string;
   headline: string;
   supportingText: string;
+  /** Short label shown in the slide selector */
   category: string;
   ctaText: string;
+  /** Section id to scroll to, or 'enquiry' to open the enquiry form */
   targetSection: string;
   image: string;
-  technicalSpec: string;
   colorHex: string;
-  colorName: string;
-  symbolism: string;
 }
 
 export interface QuickLink {
@@ -38,6 +37,8 @@ export interface ProductItem {
   number: string;
   name: string;
   shortCopy: string;
+  /** Label for the card's primary button */
+  ctaText: string;
   image: string;
   colorHex: string;
   features: string[];
@@ -79,6 +80,8 @@ export interface ManufacturingFacility {
 
 export interface ClientPartner {
   name: string;
-  division: string;
-  verified: boolean;
+  /** Imported logo image URL */
+  logo: string;
+  /** Visual scale to offset whitespace in the logo file (default 1) */
+  scale?: number;
 }

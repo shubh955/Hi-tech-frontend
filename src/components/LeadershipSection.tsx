@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
-import { ArrowRight, Quote, Award, Building, Sparkles } from 'lucide-react';
+import { ArrowRight, Quote } from 'lucide-react';
 import { CORPORATE_INFO } from '../data/content';
 
-interface LeadershipSectionProps {
-  onOpenStoryModal: () => void;
-}
-
-export const LeadershipSection: React.FC<LeadershipSectionProps> = ({ onOpenStoryModal }) => {
+export const LeadershipSection: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
-  const [showFullMessage, setShowFullMessage] = useState(false);
 
   return (
     <section id="leadership" className="py-24 bg-[#083260] text-white relative overflow-hidden">
@@ -28,6 +23,11 @@ export const LeadershipSection: React.FC<LeadershipSectionProps> = ({ onOpenStor
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4 max-w-2xl">
           Leadership with Engineering at the Core
         </h2>
+
+        {/* Lead line */}
+        <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mb-5">
+          A hands-on management team, with function heads across both divisions.
+        </p>
 
         {/* Signature Gradient Accent Bar */}
         <div 
@@ -104,71 +104,32 @@ export const LeadershipSection: React.FC<LeadershipSectionProps> = ({ onOpenStor
                 </blockquote>
               </div>
 
-              {/* Extended message / pillars */}
-              <p className="text-sm text-slate-300 leading-relaxed">
-                As the worldwide electrical transmission ecosystem accelerates towards clean renewables and greater grid modernization, transformers operate under increasingly stringent thermal loads. Our mission is to engineer cooling systems with zero margin for failure, guaranteeing uninterrupted performance for utilities across North America, Europe, Asia, and the Middle East.
-              </p>
-
-              {/* Executive Pillars */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-                <div className="p-4 rounded bg-white/5 border border-white/10 flex items-start gap-3">
-                  <Award className="w-5 h-5 text-[#159640] shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-xs font-bold text-white uppercase tracking-wider">
-                      Zero-Defect Quality
-                    </h4>
-                    <p className="text-[11px] text-slate-300 mt-1">
-                      Helium spectrometry and hydrostatic pulse tests on 100% of radiator production.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="p-4 rounded bg-white/5 border border-white/10 flex items-start gap-3">
-                  <Building className="w-5 h-5 text-[#159640] shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-xs font-bold text-white uppercase tracking-wider">
-                      Global OEM Trust
-                    </h4>
-                    <p className="text-[11px] text-slate-300 mt-1">
-                      Direct tier-1 strategic supplier agreements with industry heavyweights.
-                    </p>
-                  </div>
+              {/* Signature */}
+              <div className="flex items-center gap-3 pl-6">
+                <span className="w-8 h-[2px] bg-[#159640]" />
+                <div>
+                  <p className="text-base font-bold text-white tracking-tight">
+                    {CORPORATE_INFO.ceo.name}
+                  </p>
+                  <p className="text-xs text-slate-300 tracking-wide mt-0.5">
+                    {CORPORATE_INFO.ceo.role}
+                  </p>
                 </div>
               </div>
             </div>
 
-            {/* CTAs */}
+            {/* CTA — team lives on the About Us page (not built yet), so this is a placeholder link */}
             <div className="mt-10 pt-6 border-t border-white/10 flex flex-wrap items-center gap-5">
-              <button
-                type="button"
+              <a
+                href="#"
                 id="leadership-meet-btn"
-                onClick={onOpenStoryModal}
+                onClick={(e) => e.preventDefault()}
                 className="btn-gradient inline-flex items-center gap-2 px-6 py-3.5 rounded-lg text-white text-sm font-semibold tracking-wide shadow-md hover:-translate-y-0.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-white border border-white/20"
               >
-                <span>Meet Our Leadership</span>
+                <span>Meet the team</span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setShowFullMessage(!showFullMessage)}
-                className="text-xs font-medium text-slate-300 hover:text-white underline underline-offset-4 transition-colors"
-              >
-                {showFullMessage ? 'Collapse Corporate Philosophy' : 'Read Full Corporate Philosophy'}
-              </button>
+              </a>
             </div>
-
-            {/* Expandable Philosophy Box */}
-            {showFullMessage && (
-              <div className="mt-6 p-5 rounded bg-white/10 border border-white/15 text-xs text-slate-200 leading-relaxed animate-fade-in space-y-2">
-                <p>
-                  <strong>HTT Innovations &bull; Visual &amp; Engineering Identity:</strong> Grounded in the three pillars of Trust, Aspirational Growth, and Ethical Responsibility. Our leadership is committed to carbon-conscious manufacturing, circular zinc metallurgy, and nurturing multi-generational engineering craftsmanship.
-                </p>
-                <p>
-                  &ldquo;We don&apos;t just build radiators; we safeguard the vital arteries of global power distribution.&rdquo; &mdash; Kartik Yatin Daftari
-                </p>
-              </div>
-            )}
           </div>
         </div>
       </div>

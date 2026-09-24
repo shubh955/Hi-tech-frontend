@@ -6,6 +6,7 @@ import { CapabilityStrip } from './components/CapabilityStrip';
 import { ProductHighlights } from './components/ProductHighlights';
 import { ManufacturingSection } from './components/ManufacturingSection';
 import { LeadershipSection } from './components/LeadershipSection';
+import { USPresenceSection } from './components/USPresenceSection';
 import { ClientMarquee } from './components/ClientMarquee';
 import { StandardsAndSustainability } from './components/StandardsAndSustainability';
 import { CompanyInformation } from './components/CompanyInformation';
@@ -26,9 +27,14 @@ export default function App() {
   };
 
   const handleSelectQuickLink = (targetId: string) => {
+    if (targetId === 'enquiry') {
+      handleOpenEnquiry();
+      return;
+    }
     const el = document.getElementById(targetId);
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      // Sections align to top; single cards (e.g. product cards) are centred in view
+      el.scrollIntoView({ behavior: 'smooth', block: el.tagName === 'SECTION' ? 'start' : 'center' });
     }
   };
 
@@ -57,7 +63,7 @@ export default function App() {
         <CapabilityStrip />
 
         {/* 7. Leadership Snapshot — Executive Portrait & CEO Message */}
-        <LeadershipSection onOpenStoryModal={() => setIsStoryModalOpen(true)} />
+        <LeadershipSection />
 
         {/* 8. Client / Global Partners Section — Continuous Logo Marquee */}
         <ClientMarquee />
@@ -67,10 +73,13 @@ export default function App() {
 
         {/* 10. Corporate Information & 4 Approved Locations */}
         <CompanyInformation onOpenEnquiry={handleOpenEnquiry} />
+
+        {/* 11. US Company — High Tech Power Products */}
+        <USPresenceSection />
       </main>
 
       {/* 10. Dark Navy Footer */}
-      <Footer onOpenEnquiry={handleOpenEnquiry} />
+      <Footer />
 
       {/* Interactive Modals */}
       <EnquiryModal

@@ -179,8 +179,7 @@ export const ProductHighlights: React.FC<ProductHighlightsProps> = ({ onOpenEnqu
                           ))}
                         </div>
 
-                        {/* Actions: Explore Deep Dive & Technical Inquiry — hidden for Galvanising */}
-                        {item.id !== 'galvanising' && (
+                        {/* Actions: Explore Deep Dive & Technical Inquiry */}
                         <div className="flex items-center gap-3 pt-1">
                           <button
                             type="button"
@@ -195,7 +194,7 @@ export const ProductHighlights: React.FC<ProductHighlightsProps> = ({ onOpenEnqu
                               className="border-b pb-0.5"
                               style={{ borderColor: item.colorHex }}
                             >
-                              Explore Product
+                              {item.ctaText}
                             </span>
                             <ArrowRight
                               className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
@@ -215,7 +214,6 @@ export const ProductHighlights: React.FC<ProductHighlightsProps> = ({ onOpenEnqu
                             <ArrowUpRight className="w-3.5 h-3.5" />
                           </button>
                         </div>
-                        )}
                       </div>
                     </div>
                   </div>

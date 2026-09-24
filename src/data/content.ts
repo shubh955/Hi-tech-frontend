@@ -1,61 +1,66 @@
 import { HeroSlide, QuickLink, CapabilityStat, ProductItem, ApprovedLocation, ManufacturingFacility, ClientPartner } from '../types';
+import hitachiEnergyLogo from '../assets/images/client-logo/hitachi-energy.jpg';
+import siemensEnergyLogo from '../assets/images/client-logo/siemens-energy.png';
+import toshibaLogo from '../assets/images/client-logo/Toshiba-Logo.png';
+import wegLogo from '../assets/images/client-logo/weg.webp';
+import prolecLogo from '../assets/images/client-logo/prolec-logo.png';
+import deltaStarLogo from '../assets/images/client-logo/delta.png';
+
+// Hero banner images
+import heroRadiatorPlantRender from '../assets/images/Hi-Tech_Website_Images_Starter/1_Plants_and_facilities/new_radiator_plant_render.jpg';
+import heroRadiatorsMildSteel from '../assets/images/Hi-Tech_Website_Images_Starter/2_Products_review_needed/radiators_mild_steel_REVIEW.jpg';
+import heroPlasmaCutting from '../assets/images/Hi-Tech_Website_Images_Starter/3_Process_and_machinery/plasma_cutting_table.jpg';
+import heroBendingMachine from '../assets/images/Hi-Tech_Website_Images_Starter/3_Process_and_machinery/bending_machine.jpg';
+
+// Product card images
+import productRadiatorsGalvanised from '../assets/images/Hi-Tech_Website_Images_Starter/2_Products_review_needed/radiators_galvanised_REVIEW.png';
+import productTanksSprayPainting from '../assets/images/Hi-Tech_Website_Images_Starter/3_Process_and_machinery/spray_painting_workstation.jpg';
+import productGalvanisingLaserCutting from '../assets/images/Hi-Tech_Website_Images_Starter/3_Process_and_machinery/laser_cutting_sheet.jpg';
 
 export const HERO_SLIDES: HeroSlide[] = [
   {
     id: 'slide-01',
     slideNumber: '01',
-    headline: 'Engineering Power Forward',
-    supportingText: 'High-reliability thermal management systems and transformer cooling infrastructure engineered for the global energy transition.',
-    category: 'THERMAL MANAGEMENT',
-    ctaText: 'Explore Solutions',
+    headline: 'Powering the Global Grid',
+    supportingText: 'Radiators and tanks for power and distribution transformers.',
+    category: 'Global Grid',
+    ctaText: 'Explore our products',
     targetSection: 'solutions',
-    image: 'https://www.hitechradiators.com/wp-content/uploads/2024/11/main-power-plant-energy-ideas-energy-saving.jpg', // Official primary Hi-Tech Radiators power plant background banner
-    technicalSpec: 'Design Life: 30+ Years | Leak-Proof Guarantee',
-    colorHex: '#DAA520',
-    colorName: 'Goldenrod',
-    symbolism: 'Clarity & Purity'
+    image: heroRadiatorPlantRender,
+    colorHex: '#54B273'
   },
   {
     id: 'slide-02',
     slideNumber: '02',
-    headline: 'Built for Transformer Performance',
-    supportingText: 'Precision-formed radiator elements and header assemblies engineered to meet rigorous international utility specifications.',
-    category: 'TRANSFORMER RADIATORS',
-    ctaText: 'Discover Radiators',
-    targetSection: 'solutions',
-    image: 'https://www.hitechradiators.com/wp-content/uploads/2025/03/high-voltage-1290375.jpg', // High-voltage electrical substation and transformer grid
-    technicalSpec: 'Annual Capacity: 24,000 MT | DIN & EN Standard Compliance',
-    colorHex: '#54B273',
-    colorName: 'Medium Sea Green',
-    symbolism: 'Harmony & Balance'
+    headline: 'Made in India Since 1989',
+    supportingText: 'Supplying transformer manufacturers in more than 55 countries.',
+    category: 'Since 1989',
+    ctaText: 'About Hi-Tech',
+    targetSection: 'about',
+    image: heroRadiatorsMildSteel,
+    colorHex: '#DAA520'
   },
   {
     id: 'slide-03',
     slideNumber: '03',
-    headline: 'Precision That Powers Industry',
-    supportingText: 'Heavy-duty transformer tank fabrication with automated robotic submerged-arc welding and helium leak testing.',
-    category: 'STRUCTURAL TANKS',
-    ctaText: 'View Capabilities',
-    targetSection: 'capability',
-    image: 'https://www.hitechradiators.com/wp-content/uploads/2024/12/bulk-production-1.jpg', // Real Hi-Tech Radiators bulk production facility
-    technicalSpec: 'Capability: Up to 765 kV Class Tanks | NDT Level III Inspected',
-    colorHex: '#A26161',
-    colorName: 'Dusty Rose',
-    symbolism: 'Vibrancy & Creativity'
+    headline: 'Galvanising Under One Roof',
+    supportingText: 'In-house hot dip galvanising, a finish most manufacturers send outside.',
+    category: 'Galvanising',
+    ctaText: 'See galvanising',
+    targetSection: 'product-card-galvanising',
+    image: heroPlasmaCutting,
+    colorHex: '#C2B280'
   },
   {
     id: 'slide-04',
     slideNumber: '04',
-    headline: 'Engineered for Global Energy',
-    supportingText: 'Advanced hot-dip galvanising delivering decades of marine and industrial atmospheric corrosion protection across 55+ nations.',
-    category: 'SURFACE PROTECTION',
-    ctaText: 'Galvanising Solutions',
-    targetSection: 'solutions',
-    image: 'https://www.hitechradiators.com/wp-content/uploads/2025/03/Why_Hi-Tech_State_of_The_art_Hot_dip_Galvanization_Process.png', // Official Hi-Tech Radiators State-of-the-art Hot-dip Galvanization facility
-    technicalSpec: 'ISO 1461 Compliant | 100+ Micron Zinc Layer Uniformity',
-    colorHex: '#C2B280',
-    colorName: 'Sage',
-    symbolism: 'Warmth & Vitality'
+    headline: 'Built To Order, Every Time',
+    supportingText: "Nothing is made for stock. Every radiator and tank is built to the customer's drawing.",
+    category: 'Built to Order',
+    ctaText: 'Send an enquiry',
+    targetSection: 'enquiry',
+    image: heroBendingMachine,
+    colorHex: '#A26161'
   }
 ];
 
@@ -93,40 +98,40 @@ export const SECONDARY_PALETTE = {
 export const QUICK_LINKS: QuickLink[] = [
   {
     number: '01',
-    title: 'About Us',
-    description: 'Over three decades of manufacturing mastery in power equipment',
-    targetId: 'about',
-    tag: 'Legacy',
+    title: 'Radiators',
+    description: 'Fin type radiators for power and distribution transformers, built to the customer\'s drawing.',
+    targetId: 'product-card-radiators',
+    tag: 'Product',
     colorHex: '#DAA520', // Goldenrod
     colorName: 'Goldenrod',
     symbolism: 'Clarity & Purity'
   },
   {
     number: '02',
-    title: 'Products',
-    description: 'Engineered radiators, transformer tanks & precision galvanising',
-    targetId: 'solutions',
-    tag: 'Core Portfolio',
+    title: 'Tanks',
+    description: 'Corrugated, flat wall and pad mounted tanks, tested in house and packed for export.',
+    targetId: 'product-card-tanks',
+    tag: 'Product',
     colorHex: '#54B273', // Medium Sea Green
     colorName: 'Medium Sea Green',
     symbolism: 'Harmony & Balance'
   },
   {
     number: '03',
-    title: 'Manufacturing Plants',
-    description: '4 specialized facilities spanning 67,200+ MT annual production',
-    targetId: 'manufacturing',
-    tag: 'Global Plants',
+    title: 'Galvanising',
+    description: 'In-house hot dip galvanising, so every finish is controlled under one roof.',
+    targetId: 'product-card-galvanising',
+    tag: 'In-House',
     colorHex: '#A26161', // Dusty Rose
     colorName: 'Dusty Rose',
     symbolism: 'Vibrancy & Precision'
   },
   {
     number: '04',
-    title: 'Sustainability',
-    description: 'Eco-conscious manufacturing, energy efficiency & zinc recycling',
-    targetId: 'sustainability',
-    tag: 'Green Future',
+    title: 'Send an enquiry',
+    description: 'Share your drawing and specifications, and our team will get back to you with a quote.',
+    targetId: 'enquiry',
+    tag: 'Contact',
     colorHex: '#C2B280', // Sage
     colorName: 'Sage',
     symbolism: 'Warmth & Vitality'
@@ -135,10 +140,10 @@ export const QUICK_LINKS: QuickLink[] = [
 
 export const CAPABILITY_STATS: CapabilityStat[] = [
   {
-    value: 30,
-    suffix: '+',
-    label: 'Years of Industry Presence',
-    sublabel: 'Continuous manufacturing excellence since 1989',
+    value: new Date().getFullYear() - 1989, // 37 in 2026; stays current each year
+    suffix: '',
+    label: 'Years Since 1989',
+    sublabel: 'Building transformer radiators and tanks since 1989',
     colorHex: '#DAA520', // Goldenrod
     colorName: 'Goldenrod'
   },
@@ -146,7 +151,7 @@ export const CAPABILITY_STATS: CapabilityStat[] = [
     value: 55,
     suffix: '+',
     label: 'Countries Served',
-    sublabel: 'Exporting worldwide to premier power utilities',
+    sublabel: 'Supplying transformer manufacturers and utilities worldwide',
     colorHex: '#54B273', // Medium Sea Green
     colorName: 'Medium Sea Green'
   },
@@ -154,33 +159,37 @@ export const CAPABILITY_STATS: CapabilityStat[] = [
     value: 200,
     suffix: '+',
     label: 'Business Partners',
-    sublabel: 'Global OEM relationships built over decades',
+    sublabel: 'Long-standing relationships with OEMs and utilities',
     colorHex: '#A26161', // Dusty Rose
     colorName: 'Dusty Rose'
   },
   {
     value: 20000,
-    suffix: ' m²',
+    suffix: ' sq m',
     label: 'Manufacturing Area',
-    sublabel: 'State-of-the-art automated production facilities',
+    sublabel: 'Spread across five plants near Mumbai',
     colorHex: '#C2B280', // Sage
     colorName: 'Sage'
+  }
+];
+
+// Second row of facts below the headline stats
+export const CAPABILITY_FACTS: { title: string; detail: string }[] = [
+  {
+    title: '250+ Employees',
+    detail: 'Across five plants'
   },
   {
-    value: 24000,
-    suffix: ' MT',
-    label: 'Radiator Annual Capability',
-    sublabel: 'High-throughput automated forming lines',
-    colorHex: '#159640', // Sustainable Green
-    colorName: 'Sustainable Green'
+    title: '1,200+ Workers & 100+ Inspectors',
+    detail: 'Inspectors trained under the International Welding Engineer programme'
   },
   {
-    value: 7200,
-    suffix: ' MT',
-    label: 'Tank Operational Capability',
-    sublabel: 'Heavy power transformer tank fabrication',
-    colorHex: '#54B273', // Medium Sea Green
-    colorName: 'Medium Sea Green'
+    title: 'ISO Certified',
+    detail: 'ISO 9001, ISO 14001, ISO 45001 and ISO 3834-2'
+  },
+  {
+    title: 'Three Star Export House',
+    detail: 'Certified Three Star Export House'
   }
 ];
 
@@ -189,8 +198,9 @@ export const PRODUCT_ITEMS: ProductItem[] = [
     id: 'radiators',
     number: '01',
     name: 'RADIATORS',
-    shortCopy: 'High-performance transformer radiators engineered for durability, efficiency and reliable thermal performance.',
-    image: 'https://www.hitechradiators.com/wp-content/uploads/2024/12/bulk-production-1.jpg',
+    shortCopy: 'Fin type radiators for power and distribution transformers, in mild steel, hot dip galvanised and stainless steel, from 900 mm to 4500 mm long.',
+    ctaText: 'View radiators',
+    image: productRadiatorsGalvanised,
     colorHex: '#54B273', // Medium Sea Green
     features: [
       'Multi-flute element designs for optimal oil-to-air heat exchange',
@@ -210,8 +220,9 @@ export const PRODUCT_ITEMS: ProductItem[] = [
     id: 'tanks',
     number: '02',
     name: 'TANKS',
-    shortCopy: 'Precision-manufactured transformer tanks designed for demanding distribution and power applications.',
-    image: 'https://www.hitechradiators.com/wp-content/uploads/2024/12/free-photo-of-a-welder-at-work.jpeg',
+    shortCopy: 'Corrugated, mid power flat wall and pad mounted tanks, fabricated, painted and tested for transformer makers in India and abroad.',
+    ctaText: 'View tanks',
+    image: productTanksSprayPainting,
     colorHex: '#DAA520', // Goldenrod
     features: [
       'Heavy CNC plate-cutting, beveling, and automated submerged-arc welding',
@@ -231,8 +242,9 @@ export const PRODUCT_ITEMS: ProductItem[] = [
     id: 'galvanising',
     number: '03',
     name: 'GALVANISING',
-    shortCopy: 'Hot-dip galvanising with automated 7-tank pre-treatment and a 7.5 m SHG zinc bath, delivering durable corrosion protection for harsh industrial and coastal environments.',
-    image: 'https://www.hitechradiators.com/wp-content/uploads/2025/03/Why_Hi-Tech_State_of_The_art_Hot_dip_Galvanization_Process.png',
+    shortCopy: 'In-house hot dip galvanising with a zinc bath of 5 m x 2.5 m x 2.5 m, running since 2018. A value added finish that many manufacturers cannot offer.',
+    ctaText: 'See galvanising',
+    image: productGalvanisingLaserCutting,
     colorHex: '#C2B280', // Sage
     features: [
       'High-purity Special High Grade (SHG) molten zinc bath application',
@@ -250,14 +262,15 @@ export const PRODUCT_ITEMS: ProductItem[] = [
   }
 ];
 
+// `scale` compensates for the differing whitespace baked into each logo file,
+// so every logo reads at a similar visual size inside the card
 export const CLIENT_LOGOS: ClientPartner[] = [
-  { name: 'ABB', division: 'Power Grids & Transmission Systems', verified: true },
-  { name: 'HITACHI', division: 'Energy Infrastructure Division', verified: true },
-  { name: 'SIEMENS', division: 'Energy & Transformer Technology', verified: true },
-  { name: 'SCHNEIDER', division: 'Medium & High Voltage Solutions', verified: true },
-  { name: 'GE VERNOVA', division: 'Grid Solutions & Electrification', verified: true },
-  { name: 'TOSHIBA', division: 'Transmission & Distribution Systems', verified: true },
-  { name: 'BHEL', division: 'Heavy Electricals Infrastructure', verified: true }
+  { name: 'Hitachi Energy', logo: hitachiEnergyLogo, scale: 1.6 },
+  { name: 'Siemens Energy', logo: siemensEnergyLogo, scale: 1.6 },
+  { name: 'Toshiba', logo: toshibaLogo, scale: 1.45 },
+  { name: 'WEG', logo: wegLogo, scale: 1.8 },
+  { name: 'Prolec', logo: prolecLogo, scale: 2.2 },
+  { name: 'Delta Star', logo: deltaStarLogo, scale: 1.5 }
 ];
 
 export const MANUFACTURING_FACILITIES: ManufacturingFacility[] = [
@@ -406,6 +419,33 @@ export const APPROVED_LOCATIONS: ApprovedLocation[] = [
   }
 ];
 
+// Main site menu — shared by the header and footer.
+// Placeholder links: inner pages are not built yet, so items link to '#'.
+export const NAV_LINKS: { label: string; href: string; sectionId?: string }[] = [
+  { label: 'Home', href: '#', sectionId: 'hero' },
+  { label: 'About Us', href: '#', sectionId: 'about' },
+  { label: 'Products & Services', href: '#', sectionId: 'solutions' },
+  { label: 'Our Clients', href: '#' },
+  { label: 'Investor Relations', href: '#' },
+  { label: 'Careers', href: '#' },
+  { label: 'Media', href: '#' },
+  { label: 'CSR', href: '#' },
+  { label: 'Contact Us', href: '#', sectionId: 'contact' },
+];
+
+// Official social pages. TODO: confirm and add any other official pages.
+export const SOCIAL_LINKS = {
+  linkedin: 'https://www.linkedin.com/company/hi-tech-radiators-pvt-ltd/'
+};
+
+// US company — shown in its own section above the footer.
+// TODO: replace url with the High Tech Power Products website; confirm the lead line wording.
+export const US_COMPANY = {
+  name: 'High Tech Power Products',
+  leadLine: 'High Tech Power Products, our company in the United States, serves the North American market.',
+  url: '#'
+};
+
 export const CORPORATE_INFO = {
   companyName: 'Hi-Tech Radiators Pvt. Ltd.',
   brandEntity: 'HTT Innovations',
@@ -414,11 +454,14 @@ export const CORPORATE_INFO = {
   cin: 'U31200MH1989PTC054750',
   gstin: '27AAACH1033P1ZL',
   email: 'info@hitechradiators.com',
-  telephone: '+91 (022) 2778 0888 / 2778 0999',
+  // TODO: IT team is deciding between an automated phone menu and a virtual number
+  telephone: 'To be confirmed',
+  // TODO: domain being finalised
+  website: 'To be confirmed',
   ceo: {
-    name: 'Mr. Kartik Yatin Daftari',
-    role: 'MD & CEO',
+    name: 'Kartik Yatin Daftari',
+    role: 'Managing Director and CEO',
     company: 'Hi-Tech Radiators Pvt. Ltd.',
-    excerpt: 'At Hi-Tech Radiators, our engineering philosophy is built on absolute thermal precision, robust material integrity, and unwavering commitment to global power utilities. For over three decades, we have partnered with the world\'s premier transformer manufacturers to build high-reliability cooling systems that sustain the modern electrical grid.'
+    excerpt: 'India\'s growth rests on strong fundamentals: a young workforce, steady domestic demand and rising global competitiveness. Our role as business leaders goes beyond the usual numbers. It is to build sustainable, energised organisations that can make the most of that opportunity.'
   }
 };

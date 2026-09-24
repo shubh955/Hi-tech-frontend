@@ -1,17 +1,18 @@
 import React from 'react';
 import { QUICK_LINKS } from '../data/content';
-import { ArrowRight, ArrowUpRight, Compass, CheckCircle2, Building2, Layers, Factory, Leaf } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Compass, CheckCircle2, Layers, Box, ShieldCheck, Send } from 'lucide-react';
 
 interface IntroSectionProps {
   onSelectQuickLink: (targetId: string) => void;
   onOpenStoryModal: () => void;
 }
 
+// Radiators, Tanks, Galvanising, Send an enquiry
 const PILLAR_ICONS = [
-  Building2,
   Layers,
-  Factory,
-  Leaf
+  Box,
+  ShieldCheck,
+  Send
 ];
 
 export const IntroSection: React.FC<IntroSectionProps> = ({
@@ -50,10 +51,10 @@ export const IntroSection: React.FC<IntroSectionProps> = ({
           <div className="lg:col-span-7 flex flex-col justify-between pt-2">
             <div className="border-l-2 border-[#159640] pl-6 lg:pl-8 py-1">
               <p className="text-lg sm:text-xl text-slate-700 leading-relaxed font-normal">
-                Hi-Tech Radiators Pvt. Ltd. is a global leader in the manufacturing of transformer radiators and tanks. With cutting-edge production facilities and a commitment to superior quality, we provide innovative, value-driven solutions that meet the highest industry standards.
+                Hi-Tech Radiators has been building transformer radiators and tanks since 1989. From five plants near Mumbai we supply fin type radiators, corrugated, flat wall and pad mounted tanks, and in-house hot dip galvanising to transformer manufacturers and utilities in more than 55 countries.
               </p>
               <p className="mt-4 text-sm text-slate-600 leading-relaxed">
-                Under our HTT Innovations engineering initiative, we combine thirty years of thermal engineering heritage with modern robotic seam-welding, automated corrugation, and specialized hot-dip zinc protection to support the world’s most demanding power distribution grids.
+                Every order is built to the customer&rsquo;s drawing, tested in house and packed for export.
               </p>
             </div>
 
@@ -84,11 +85,11 @@ export const IntroSection: React.FC<IntroSectionProps> = ({
               <div className="flex items-center gap-2 mb-2">
                 <Compass className="w-4 h-4 text-[#159640]" />
                 <span className="text-xs font-bold uppercase tracking-widest text-[#159640]">
-                  STRATEGIC PILLARS &bull; INTERACTIVE NAVIGATION
+                  QUICK LINKS
                 </span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-[#083260] tracking-tight">
-                Core Engineering Capabilities
+                What We Make
               </h3>
               {/* Signature Gradient Accent Bar */}
               <div 
@@ -96,7 +97,7 @@ export const IntroSection: React.FC<IntroSectionProps> = ({
                 style={{ backgroundImage: 'linear-gradient(90deg, #083260 0%, #159640 100%)' }}
               />
               <p className="text-sm sm:text-base text-slate-600 max-w-2xl font-normal leading-relaxed">
-                Directly explore our thirty-year heritage, high-power cooling products, advanced manufacturing plants, and sustainable manufacturing practices.
+                Go straight to our radiators, tanks and galvanising, or send us your drawing for a quote.
               </p>
             </div>
             
@@ -175,7 +176,9 @@ export const IntroSection: React.FC<IntroSectionProps> = ({
                         style={{ backgroundImage: 'linear-gradient(90deg, #083260 0%, #159640 100%)' }}
                       />
                       <div className="relative px-3.5 py-2.5 rounded-lg bg-slate-50 group-hover:bg-transparent transition-colors duration-300 flex items-center justify-between text-xs font-bold text-[#083260] group-hover:text-white">
-                        <span className="uppercase tracking-wider">Explore Strategic Pillar</span>
+                        <span className="uppercase tracking-wider">
+                          {link.targetId === 'enquiry' ? 'Send Enquiry' : `View ${link.title}`}
+                        </span>
                         <div className="w-6 h-6 rounded-full flex items-center justify-center bg-white group-hover:bg-white/20 text-[#083260] group-hover:text-white transition-all shadow-xs group-hover:translate-x-1">
                           <ArrowUpRight className="w-3.5 h-3.5" />
                         </div>
