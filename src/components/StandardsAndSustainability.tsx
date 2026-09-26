@@ -177,14 +177,15 @@ export const StandardsAndSustainability: React.FC<StandardsAndSustainabilityProp
                     {/* Bottom Link: LEARN MORE with Arrow */}
                     <div className="pt-6 mt-5 border-t border-slate-100 group-hover:border-white/20 flex items-center justify-between transition-colors duration-300">
                       <a
-                        href={effort.link}
+                        href="#"
                         className="text-xs font-bold uppercase tracking-wider flex items-center gap-2 transition-colors duration-300 text-[#083260] group-hover:text-white"
                       >
+                        {/* {effort.link} */}
                         <span>LEARN MORE</span>
                       </a>
 
                       <a
-                        href={effort.link}
+                        href="#"
                         aria-label={`Learn more about ${effort.title}`}
                         className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 bg-slate-100 text-slate-600 group-hover:bg-white group-hover:text-[#083260] group-hover:shadow-md"
                       >
@@ -201,7 +202,7 @@ export const StandardsAndSustainability: React.FC<StandardsAndSustainabilityProp
           <div className="flex items-center justify-center mb-16">
             <a
               id="view-more-sustainability-btn"
-              href="/sustainability"
+              href="#"
               className="group inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-white hover:bg-[#083260] text-[#083260] hover:text-white border-2 border-[#083260] shadow-sm hover:shadow-xl transition-all duration-300 font-bold text-xs uppercase tracking-wider cursor-pointer active:scale-95"
             >
               <span>VIEW MORE INITIATIVES</span>

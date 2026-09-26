@@ -184,12 +184,12 @@ export const ProductHighlights: React.FC<ProductHighlightsProps> = ({ onOpenEnqu
                           <button
                             type="button"
                             id={`explore-btn-${item.id}`}
-                            onClick={(e) => {
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded text-xs sm:text-sm font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/25 transition-all duration-300 focus:outline-none hover:border-white/50"
+                            >
+                            {/* onClick={(e) => {
                               e.stopPropagation();
                               setSelectedProduct(item);
-                            }}
-                            className="inline-flex items-center gap-2 px-4 py-2 rounded text-xs sm:text-sm font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/25 transition-all duration-300 focus:outline-none hover:border-white/50"
-                          >
+                            }} */}
                             <span
                               className="border-b pb-0.5"
                               style={{ borderColor: item.colorHex }}
@@ -204,12 +204,12 @@ export const ProductHighlights: React.FC<ProductHighlightsProps> = ({ onOpenEnqu
 
                           <button
                             type="button"
-                            onClick={(e) => {
+                            className="btn-gradient inline-flex items-center gap-1.5 px-4 py-2 rounded-md text-xs font-semibold text-white shadow-md hover:-translate-y-0.5"
+                            >
+                            {/* onClick={(e) => {
                               e.stopPropagation();
                               onOpenEnquiry(item.name);
-                            }}
-                            className="btn-gradient inline-flex items-center gap-1.5 px-4 py-2 rounded-md text-xs font-semibold text-white shadow-md hover:-translate-y-0.5"
-                          >
+                            }} */}
                             <span>Inquire</span>
                             <ArrowUpRight className="w-3.5 h-3.5" />
                           </button>
